@@ -11,6 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Routes for players page
+Route::get('/api/players', 'PlayersController@getPlayersList');
+Route::get('/players', 'PlayersController@getPlayers');
+
+// Routes for managers page
+Route::get('/managers', 'ManagersController@getManagers');
