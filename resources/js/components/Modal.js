@@ -1,7 +1,7 @@
 import React from 'react'
 import { Modal, Header, Button, Select } from 'semantic-ui-react'
 
-export default function Modal(props) {
+export default function modal(props) {
   return (
     <Modal
       trigger={
