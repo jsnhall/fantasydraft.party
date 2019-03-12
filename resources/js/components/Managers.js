@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+import axios from 'axios'
 import { Segment, Form, Button, Grid, List, Message, Icon } from 'semantic-ui-react'
 
 export default function Managers() {
@@ -11,6 +12,13 @@ export default function Managers() {
     setManagers([...managers, managerObj])
     setName('')
     setEmail('')
+
+    axios.post('/managers/store', {
+      name,
+      email
+    })
+      .then(bla => console.log(bla))
+      .catch(err => console.log(err))
   }
 
   return (
