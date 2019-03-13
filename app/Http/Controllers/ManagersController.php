@@ -8,7 +8,9 @@ use Illuminate\Http\Request;
 class ManagersController extends Controller
 {
     public function show() {
-        
+        $managers = Manager::where('user_id', 1)->get(['name', 'email']);
+
+        return($managers);
     }
 
     public function create() {
@@ -24,6 +26,8 @@ class ManagersController extends Controller
 
         $manager->save();
 
-        return (view('app'));
+        $managers = Manager::where('user_id', 1)->get(['name', 'email']);
+
+        return ($managers);
     }
 }

@@ -17,4 +17,5 @@ Route::get('/players', 'PlayersController@getPlayers');
 
 // Routes for managers page
 Route::get('/managers', 'ManagersController@create');
+Route::get('/managers/show', 'ManagersController@show');
 Route::post('/managers/store', 'ManagersController@store');
