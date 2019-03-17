@@ -22,7 +22,7 @@ export default function Managers() {
 
     axios.post('/managers/store', { name, email })
       .then(res => {
-        setManagers(res.data)
+        setManagers([...managers, res.data])
         setName('')
         setEmail('')
         nameInput.current.focus()

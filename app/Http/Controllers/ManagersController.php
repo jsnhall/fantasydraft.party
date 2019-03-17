@@ -28,6 +28,6 @@ class ManagersController extends Controller
 
         $managers = Manager::where('user_id', 1)->get(['name', 'email']);
 
-        return ($managers);
+        return ($manager);
     }
 }
