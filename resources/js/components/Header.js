@@ -2,6 +2,7 @@ import React from 'react'
 import { Menu, Button, Container } from 'semantic-ui-react'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
+import Login from './Login'
 import Players from './Players'
 import Managers from './Managers'
 
@@ -27,23 +28,26 @@ export default function Header() {
           <Menu.Menu position='right'>
             <Menu.Item>
               <div style={{ alignSelf: 'center' }}>
-                <Button
-                  primary
-                  basic
-                  compact 
-                  style={{
-                    fontWeight: 'bold',
-                    marginRight: '1em'
-                  }}
-                >
-                  Log In
-                </Button>
+                <Link to="/login">
+                  <Button
+                    primary
+                    basic
+                    compact 
+                    style={{
+                      fontWeight: 'bold',
+                      marginRight: '1em'
+                    }}
+                  >
+                    Log In
+                  </Button>
+                </Link>
                 <Button primary compact>Sign Up</Button>
               </div>
             </Menu.Item>
           </Menu.Menu>
         </Menu>
         <Container style={{ margin: '2em 0' }}>
+          <Route path="/login/" component={Login} />
           <Route path="/players/" component={Players} />
           <Route path="/managers/" component={Managers} />
         </Container>
