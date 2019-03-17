@@ -26,8 +26,6 @@ class ManagersController extends Controller
 
         $manager->save();
 
-        $managers = Manager::where('user_id', 1)->get(['name', 'email']);
-
         return ($manager);
     }
 }
