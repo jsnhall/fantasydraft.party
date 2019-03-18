@@ -3,6 +3,7 @@ import { Menu, Button, Container } from 'semantic-ui-react'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import Login from './Login'
+import SignUp from './SignUp'
 import Players from './Players'
 import Managers from './Managers'
 
@@ -41,13 +42,16 @@ export default function Header() {
                     Log In
                   </Button>
                 </Link>
-                <Button primary compact>Sign Up</Button>
+                <Link to="/signup">
+                  <Button primary compact>Sign Up</Button>
+                </Link>
               </div>
             </Menu.Item>
           </Menu.Menu>
         </Menu>
         <Container style={{ margin: '2em 0' }}>
           <Route path="/login/" component={Login} />
+          <Route path="/signup/" component={SignUp} />
           <Route path="/players/" component={Players} />
           <Route path="/managers/" component={Managers} />
         </Container>

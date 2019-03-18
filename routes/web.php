@@ -20,5 +20,6 @@ Route::get('/managers', 'ManagersController@create');
 Route::get('/managers/show', 'ManagersController@show');
 Route::post('/managers/store', 'ManagersController@store');
 
-// Routes for login page
-Route::get('/login', 'UsersController@create');
+// Routes for users
+Route::get('/signup', 'UsersController@create');
+Route::get('/login', 'UsersController@login');
