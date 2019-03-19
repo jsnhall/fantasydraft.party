@@ -23,3 +23,6 @@ Route::post('/managers/store', 'ManagersController@store');
 // Routes for users
 Route::get('/signup', 'UsersController@create');
 Route::get('/login', 'UsersController@login');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
