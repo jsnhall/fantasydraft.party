@@ -26,3 +26,7 @@ Route::get('/login', 'UsersController@login');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::post('/login/test', 'UsersController@loginUser');
+Route::post('/register/test', 'UsersController@register');
+Route::get('/test_manager_get', 'UsersController@test_manager_get');
