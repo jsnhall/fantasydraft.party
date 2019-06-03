@@ -1,13 +1,37 @@
-import React from 'react'
+import React, { useState } from 'react'
+import axios from 'axios'
 import { Menu, Button, Container } from 'semantic-ui-react'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import Login from './Login'
-import SignUp from './SignUp'
+import Register from './Register'
 import Players from './Players'
 import Managers from './Managers'
 
 export default function Header() {
+  const [isAuthenticated, setIsAuthenticated] = useState()
+
+  const checkAuth = () => {
+    axios.post('/check/auth')
+      .then(res => {
+        if (res.data) {
+          setIsAuthenticated(true)
+        } else {
+          setIsAuthenticated(false)
+        }
+      })
+      .catch(err => console.log(err))
+  }
+
+  checkAuth();
+
+  const logOut = () => {
+    console.log(isAuthenticated)
+    axios.post('/logout')
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
+  }
+
   return (
     <Router>
       <>
@@ -29,7 +53,26 @@ export default function Header() {
           <Menu.Menu position='right'>
             <Menu.Item>
               <div style={{ alignSelf: 'center' }}>
-                <Link to="/login">
+                {
+                  !isAuthenticated ?
+                  <>
+                    <Link to="/login">
+                      <Button
+                        primary
+                        basic
+                        compact 
+                        style={{
+                          fontWeight: 'bold',
+                          marginRight: '1em'
+                        }}
+                      >
+                        Log In
+                      </Button>
+                    </Link>
+                    <Link to="/signup">
+                      <Button primary compact>Sign Up</Button>
+                    </Link>
+                  </> :
                   <Button
                     primary
                     basic
@@ -38,20 +81,18 @@ export default function Header() {
                       fontWeight: 'bold',
                       marginRight: '1em'
                     }}
+                    onClick={logOut}
                   >
-                    Log In
+                    Log Out
                   </Button>
-                </Link>
-                <Link to="/signup">
-                  <Button primary compact>Sign Up</Button>
-                </Link>
+                }
               </div>
             </Menu.Item>
           </Menu.Menu>
         </Menu>
         <Container style={{ margin: '2em 0' }}>
           <Route path="/login/" component={Login} />
-          <Route path="/signup/" component={SignUp} />
+          <Route path="/signup/" component={Register} />
           <Route path="/players/" component={Players} />
           <Route path="/managers/" component={Managers} />
         </Container>

@@ -23,10 +23,11 @@ Route::post('/managers/store', 'ManagersController@store');
 // Routes for users
 Route::get('/signup', 'UsersController@create');
 Route::get('/login', 'UsersController@login');
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::post('/login/test', 'UsersController@loginUser');
-Route::post('/register/test', 'UsersController@register');
+// User routes
 Route::get('/test_manager_get', 'UsersController@test_manager_get');
+
+// Auth routes
+Route::post('/check/auth', 'UsersController@checkAuth');
+Route::post('/logout','LoginController@logout');
+Auth::routes();

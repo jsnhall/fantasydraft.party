@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\User;
 use Auth;
+
 class UsersController extends Controller
 {
     public function create() {
@@ -49,4 +50,17 @@ class UsersController extends Controller
         $user = User::Find(1);
         dd($user->managers);
     }
+
+    public function checkAuth()
+    {
+        if (Auth::check())
+        {
+            return 'true';
+        }
+        else
+        {
+            return 'false';
+        }
+    }
+
 }
