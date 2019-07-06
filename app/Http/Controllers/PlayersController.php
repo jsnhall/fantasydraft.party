@@ -8,7 +8,7 @@ class PlayersController extends Controller
 {
     public function getPlayersList() {
         $curl = curl_init();
-        $apiKey = $_ENV['FANTASY_NERDS_API_KEY'];
+        $apiKey = getenv('FANTASY_NERDS_API_KEY');
 
         curl_setopt_array($curl, array(
             CURLOPT_URL => "https://www.fantasyfootballnerd.com/service/draft-rankings/json/" . $apiKey,
@@ -19,8 +19,14 @@ class PlayersController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => array(
-                "cache-control: no-cache",
-                "postman-token: 7b7c7884-a667-6dfc-23a8-7c3037be56dd"
+                "Accept: */*",
+                "Cache-Control: no-cache",
+                "Connection: keep-alive",
+                "Host: www.fantasyfootballnerd.com",
+                "Postman-Token: ec2dba6a-4310-451c-ad6f-37bc657d8ea6,41883270-48ee-4b6a-a12c-087eb166b7c7",
+                "User-Agent: PostmanRuntime/7.15.0",
+                "accept-encoding: gzip, deflate",
+                "cache-control: no-cache"
             ),
         ));
 
